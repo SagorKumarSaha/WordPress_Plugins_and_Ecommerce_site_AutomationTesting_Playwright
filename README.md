@@ -28,8 +28,8 @@ Make sure you have the following installed:
 
 ## Setup Instructions
 ### 1. Clone the Repository
-git clone https://github.com/SagorKumarSaha/Food_Ordering_Website_AutomationTesting_Playwright.git <br>
-cd Food_Ordering_Website_AutomationTesting_Playwright
+git clone https://github.com/SagorKumarSaha/WordPress_Plugins_and_Ecommerce_site_AutomationTesting_Playwright.git <br>
+cd WordPress_Plugins_and_Ecommerce_site_AutomationTesting_Playwright
 ### 2. Install Dependencies
 npm install
 ### 3. Install Playwright Browsers
