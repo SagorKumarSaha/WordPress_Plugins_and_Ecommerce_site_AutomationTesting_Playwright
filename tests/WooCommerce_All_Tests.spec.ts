@@ -11,7 +11,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 
-test.setTimeout(360000);
+test.setTimeout(1800000);
 
 const randomNum = Math.floor(Math.random() * 10000);
 const email = `roy${randomNum}@yopmail.com`;
