@@ -5,7 +5,7 @@ This repository contains a complete automation-ready test suite for:
 - FlexTable WordPress Plugin
 - WooCommerce Checkout & User Account Flow
 
-The test cases are structured for easy implementation using Playwright, Cypress, Selenium, or any automation framework.
+The test cases are structured for easy implementation using Playwright.
 They cover login, plugin validation, table creation, frontend validation, checkout flows, and order history.
 
 ## Features
@@ -62,3 +62,11 @@ npx playwright test --project=webkit
 npx playwright show-report
 ### Reports are automatically created under:
 /playwright-report
+
+## CI/CD with GitHub Actions
+This repository includes a GitHub Actions workflow to run the tests automatically on every push or pull request to the main branches.
+### Key Features
+- Runs Playwright tests sequentially in headed mode using Xvfb
+- Supports environment variables using GitHub Secrets (ADMIN_USERNAME & ADMIN_PASSWORD)
+- Automatically installs Node.js, dependencies, Playwright browsers, PowerShell, and clipboard tools
+- Uploads HTML test reports as workflow artifacts
