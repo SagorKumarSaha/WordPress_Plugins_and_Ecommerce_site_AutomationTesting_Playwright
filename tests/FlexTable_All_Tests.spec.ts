@@ -32,9 +32,9 @@ test.describe.serial("Run these tests one after another", () => {
     const verify = txt?.includes("Welcome to WordPress!");
 
     if (verify === true) {
-      console.log("\n Login successful and Test passed");
+      console.log("\n TC1 - Test Passed: Login successful.");
     } else {
-      console.log("\n Test failed");
+      console.log("\n TC1 - Test Failed: Test failed");
     }
 
   });
@@ -68,9 +68,9 @@ test.describe.serial("Run these tests one after another", () => {
     const verifyPlugin = await dashboard_Page.flexTablePluginOption.isVisible();
 
     if (verify === true && verifyPlugin === true) {
-      console.log("\n FlexTable plugin is active and visible under the WordPress Plugins list.");
+      console.log("\n TC2 - Test Passed: FlexTable plugin is active and visible under the WordPress Plugins list.");
     } else {
-      console.log("\n Test failed");
+      console.log("\n TC2 - Test Failed: FlexTable plugin is inactive");
     }
 
 
@@ -95,9 +95,9 @@ test.describe.serial("Run these tests one after another", () => {
     const isFlexTableDashboardVisible = await flexTableDashboard_Page.flexTableDashboardHeading.isVisible();
 
     if (isFlexTableDashboardVisible) {
-      console.log("\n FlexTable Dashboard UI is displayed without errors and Test passed.");
+      console.log("\n TC3 - Test Passed: FlexTable Dashboard UI is displayed without errors.");
     } else {
-      console.log("\n Test failed");
+      console.log("\n TC3 - Test Failed: FlexTable Dashboard UI is not displayed");
     }
 
 
@@ -129,9 +129,9 @@ test.describe.serial("Run these tests one after another", () => {
     const isTableTitleVisible = await flexTableDashboard_Page.addedTableTitle.isVisible();
 
     if (isTableTitleVisible) {
-      console.log("\n Test Passed: Table created successfully and  Table name is displayed correctly.");
+      console.log("\n TC4 - Test Passed: Table created successfully and  Table name is displayed correctly.");
     } else {
-      console.log("\n Test Failed: Table not found on the dashboard.");
+      console.log("\n TC4 - Test Failed: Table not found on the dashboard.");
     }
 
 
@@ -172,6 +172,7 @@ test.describe.serial("Run these tests one after another", () => {
     await dashboard_Page.newPageOption.click();
     await postNew_Page.addShortcodeAndPublishPost(tableName, copiedShortcode);
     await base.page.waitForTimeout(5000);
+    console.log("\n Table name: ", tableName);
 
     // Verify if the table is displayed in the published post and table data is correct
     const dataOfRow1Col1 = "Tahsin";
@@ -190,9 +191,9 @@ test.describe.serial("Run these tests one after another", () => {
     const row6Col2Text = await row6Col2.textContent();
 
     if (row1Col1Text?.includes(dataOfRow1Col1) && row10Col1Text?.includes(dataOfRow10Col1) && row6Col2Text?.includes(dataOfRow6Col2)) {
-      console.log("\n Test passed: Table is displayed correctly using shortcode in the published post.\n");
+      console.log("\n TC5 - Test Passed: Table is displayed correctly using shortcode in the published post.\n");
     } else {
-      console.log("\n Test failed: Table data is incorrect or table not displayed in the published post.");
+      console.log("\n TC5 - Test Failed: Table data is incorrect or table not displayed in the published post.");
     }
 
 
@@ -233,9 +234,9 @@ test.describe.serial("Run these tests one after another", () => {
     console.log("\n Table Description:", description);
 
     if (title?.trim() === "Test_Table" && description?.trim() === "This is a test table description.") {
-      console.log("\n Test Passed: Table title appears above and Table description appears below the table.");
+      console.log("\n TC6 - Test Passed: Table title appears above and Table description appears below the table.");
     } else {
-      console.log("\n Test Failed: Table Title and Description are not displayed correctly.");
+      console.log("\n TC6 - Test Failed: Table Title and Description are not displayed correctly.");
     }
 
 
@@ -273,9 +274,9 @@ test.describe.serial("Run these tests one after another", () => {
     const paginationOption = await tablePagination.isVisible();
 
     if (entryInfoOption && paginationOption === true) {
-      console.log("\n Test Passed: Table entry info and pagination are displayed correctly.");
+      console.log("\n TC7 - Test Passed: Table entry info and pagination are displayed correctly.");
     } else {
-      console.log("\n Test Failed: Table entry info and pagination are not displayed correctly.");
+      console.log("\n TC7 - Test Failed: Table entry info and pagination are not displayed correctly.");
     }
 
 
@@ -316,9 +317,9 @@ test.describe.serial("Run these tests one after another", () => {
     console.log("\n Total rows: " + rowCount);
 
     if (height <= '500px' && rowCount == 5) {
-      console.log("\n Test passed: Table height and rows per page are set correctly.");
+      console.log("\n TC8 - Test Passed: Table height and rows per page are set correctly.");
     } else {
-      console.log("\n Test failed: Table height or rows per page are not set correctly.");
+      console.log("\n TC8 - Test Failed: Table height or rows per page are not set correctly.");
     }
 
 
@@ -344,7 +345,7 @@ test.describe.serial("Run these tests one after another", () => {
     //await base.page.waitForTimeout(10000);
     await flexTableDashboard_Page.confirmDeleteBtn.waitFor({ state: "visible" });
     await flexTableDashboard_Page.confirmDeleteBtn.click();
-    await base.page.waitForTimeout(5000); // Wait for 5 seconds to ensure deletion is processed
+    await base.page.waitForTimeout(10000); // Wait for 10 seconds to ensure deletion is processed
 
     //verify table is deleted successfully and not showing on the post page
     await base.page.goto("http://www.sagorsaha.free.nf/" + tableName + "/");
@@ -356,9 +357,9 @@ test.describe.serial("Run these tests one after another", () => {
     await afterDelete.waitFor({ state: "visible" });
 
     if (tableNameText?.includes(tableName) && afterDeleteMsg?.includes('Table maybe deleted or can’t be loaded.')) {
-      console.log("\n Test passed: Table is deleted successfully and not showing on the post page.\n");
+      console.log("\n TC9 - Test Passed: Table is deleted successfully and not showing on the post page.\n");
     } else {
-      console.log("\n Test failed: Table is still showing on the post page.");
+      console.log("\n TC9 - Test Failed: Table is still showing on the post page.");
     }
   
 
