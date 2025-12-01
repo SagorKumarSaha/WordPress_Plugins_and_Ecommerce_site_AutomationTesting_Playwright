@@ -33,7 +33,6 @@ test.describe.serial("Run these tests one after another", () => {
         await homePage.profileIcon.click();
         // const randomNum = Math.floor(Math.random() * 10000);
         // const email = `roy${randomNum}@yopmail.com`;
-        console.log("\n Generated Email: " + email);
         await myAccountPage.registerNewUser(email, password);
 
         // Add further steps for the checkout flow here
@@ -47,9 +46,9 @@ test.describe.serial("Run these tests one after another", () => {
         const messageText = await orderConfirmation.textContent();
 
         if (messageText?.includes('Thank you. Your order has been received.')) {
-            console.log("\n Test passed: Order placed successfully.");
+            console.log("\n TS1 - Test Passed: Order placed successfully.");
         } else {
-            console.log("\n Test failed: Order placement failed.");
+            console.log("\n TS1 - Test Failed: Order placement failed.");
         }
 
     });
@@ -91,9 +90,9 @@ test.describe.serial("Run these tests one after another", () => {
         const statusText = await orderStatus.textContent();
 
         if (statusText?.includes('Completed')) {
-            console.log("\n Test passed: Order status is Completed in user account.");
+            console.log("\n TS2 - Test Passed: Order status is Completed in user account.");
         } else {
-            console.log("\n Test failed: Order status is not Completed in user account.");
+            console.log("\n TS2 - Test Failed: Order status is not Completed in user account.");
         }
 
     });
