@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      username: ${{ secrets.ADMIN_USERNAME }}
-      password: ${{ secrets.ADMIN_PASSWORD }}
+      ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
     
     steps:
     - uses: actions/checkout@v4
