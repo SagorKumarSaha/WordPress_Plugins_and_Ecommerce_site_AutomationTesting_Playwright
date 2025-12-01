@@ -124,6 +124,7 @@ test.describe.serial("Run these tests one after another", () => {
 
     // Verify Table Creation Success Message
     await dashboard_Page.flexTablePluginOption.click();
+    await base.page.waitForTimeout(70000);                    //this wait is required for github action otherwise we are facing test failed
     await flexTableDashboard_Page.addedTableTitle.waitFor({ state: "visible" });
     const isTableTitleVisible = await flexTableDashboard_Page.addedTableTitle.isVisible();
 
