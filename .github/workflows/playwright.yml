@@ -22,6 +22,16 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Install PowerShell
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y wget apt-transport-https software-properties-common
+          wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
+          sudo dpkg -i packages-microsoft-prod.deb
+          sudo apt-get update
+          sudo apt-get install -y powershell
+    - name: Install X11 clipboard tools
+      run: sudo apt-get install -y xclip xsel
     - name: Run Playwright Tests in Headed Mode (with Xvfb)
       run: xvfb-run --auto-servernum -- npx playwright test --project=chromium --workers=1
     - uses: actions/upload-artifact@v4
