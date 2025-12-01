@@ -40,7 +40,7 @@ jobs:
     - name: Install X11 clipboard tools
       run: sudo apt-get install -y xclip xsel
     - name: Run Playwright Tests in Headed Mode (with Xvfb)
-      run: xvfb-run --auto-servernum -- npx playwright test --project=chromium --workers=1
+      run: xvfb-run --auto-servernum -- npx playwright test --project=chromium --workers=1 --reporter=html
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
