@@ -30,6 +30,13 @@ jobs:
           sudo dpkg -i packages-microsoft-prod.deb
           sudo apt-get update
           sudo apt-get install -y powershell
+
+    - name: Add PowerShell to PATH
+      run: echo "/usr/bin/pwsh" >> $GITHUB_PATH
+
+    - name: Create powershell symlink
+      run: sudo ln -s /usr/bin/pwsh /usr/bin/powershell
+
     - name: Install X11 clipboard tools
       run: sudo apt-get install -y xclip xsel
     - name: Run Playwright Tests in Headed Mode (with Xvfb)
